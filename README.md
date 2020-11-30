@@ -1,4 +1,4 @@
-# this repository contains the code used in the paper 'Predicting ....', written in R.
+This repository contains the R scripts used in 'Predicting...'
 
 
 # details on the scripts:
