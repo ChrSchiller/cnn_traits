@@ -14,7 +14,7 @@ R scripts used in "Deep Learning and Citizen Science Enable to Measure Plant Fun
 '13_evaluation_global_trait_distribution_maps.R'  
 '14_geographical_distribution.R'  
 '15_climatic_distribution.R'  
-'16_phylogeneteic_signal.R'  
+'16_phylogenetic_signal.R'  
   
 Details about the purpose of each script are given in the R-scripts. 
 
