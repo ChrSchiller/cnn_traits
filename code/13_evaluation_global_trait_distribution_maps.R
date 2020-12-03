@@ -84,7 +84,7 @@ nmass_bm <- raster(paste0(workdir, path_data, "/Nmass.tif"))
 nmass_bm <- 10^nmass_bm
 
 
-################# Moreno-Martínez et al. (2018) #####################
+################# Moreno-MartÃ­nez et al. (2018) #####################
 
 ### sla
 sla_moreno <- raster(paste0(workdir, path_data, "/SLA_1km_v1.tif"))
@@ -136,7 +136,7 @@ ssd_bm <- resample(ssd_bm, ssd_schiller, method = "bilinear")
 sla_bm <- resample(sla_bm, sla_schiller, method = "bilinear")
 nmass_bm <- resample(nmass_bm, nm_schiller, method = "bilinear")
 
-# Moreno-Martínez
+# Moreno-MartÃ­nez
 sla_moreno <- resample(sla_moreno, sla_schiller, method = "bilinear")
 # raster cells that are off land mass seem to have negative values -> assign NA
 sla_moreno[(sla_moreno < 0)] <- NA
