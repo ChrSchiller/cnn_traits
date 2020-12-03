@@ -42,7 +42,7 @@ cf <- round(coef(fit), 4)
 
 ## printing NMAE and R2
 mtext(paste0("NMAE = ", round(nmae, 2), " %"), 3, line=-1.5, cex = 1, adj = 0, at = 0)
-mtext(paste0("R² = ", round(summary(fit)$r.squared, 4)), 3, line=-3, cex = 1, adj = 0, at = 0)
+mtext(paste0("RÂ² = ", round(summary(fit)$r.squared, 4)), 3, line=-3, cex = 1, adj = 0, at = 0)
 
 
 
