@@ -79,7 +79,7 @@ pdf(paste0(workdir, path_results, "Plot_climatic_distribution.pdf"), width=8, he
 par(mar = c(4, 4, 3, 1))
 
 plot(1, type="n", xlim = c(0, 6200), ylab = "", xlab = "", ylim = rev(c(-18, 30)))
-title(ylab="Mean annual temperatures (°C)", xlab = "Mean annual precipitation (mm)", line=2.5, cex.lab=1.2)
+title(ylab="Mean annual temperatures (Â°C)", xlab = "Mean annual precipitation (mm)", line=2.5, cex.lab=1.2)
 plot(dat_sp, add = TRUE, col = "darkgreen", pch = 20)
 plot(whittaker_poly_full, add = TRUE, border = "gray30", lwd = 2)
 
