@@ -65,7 +65,7 @@ yrange2 <- range(dat$r2)
 par(mar = c(4, 6, 3, 3))
 
 plot(xrange, yrange2, type="n", xlab = "",
-     ylab=parse(text='R²'), xaxt = "n", cex.axis = 2.4, cex.lab = 2.5, ylim = c(0, 0.6))
+     ylab=parse(text='RÂ²'), xaxt = "n", cex.axis = 2.4, cex.lab = 2.5, ylim = c(0, 0.6))
 axis(1, at=1:4, labels=c("Baseline", "Plasticity", "Bioclim", "Ensemble"), cex.axis = 2.5, mgp = c(.5, 1.8, 0))
 abline(h = seq(0, 0.6, 0.1), col = "grey")
 
