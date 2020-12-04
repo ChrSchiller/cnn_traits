@@ -85,28 +85,29 @@ colors <- pal_npg("nrc")(10)
 pdf(paste0(workdir, path_results, "Boxplots_evaluation.pdf"), width=12, height=5)
 
 layout(matrix(c(1, 1, 1, 2, 2, 3, 3, 3), nrow = 1, ncol = 8, byrow = TRUE))
-par(mar = c(5,5,1,0)) 
+par(mar = c(6,7,1,0), mgp=c(4.5,1.5,0))
 
 ## plot 1: image quality
 
 boxplot(dat$mae ~ dat$qual, ylim = c(-0.02, 0.5), ylab = "Mean absolute error [unitless]", frame.plot = FALSE, 
-        lty = 1, names = c("low", "medium", "high"), xlab = "Image quality", cex.axis = 1.4, cex.lab = 1.4, 
-        boxfill = colors[2], boxlwd = 2, pch = 20)
+        lty = 1, names = c("low", "medium", "high"), xlab = "Image quality", cex.axis = 2.5, cex.lab = 2.7, 
+        boxfill = colors[2], boxlwd = 2, pch = 20) 
 
 # add grid line
 abline(h = seq(0, 0.5, 0.1), col = "grey")
 
 # get grid lines to background
-boxplot(dat$mae ~ dat$qual, ylim = c(-0.02, 0.5), ylab = "Mean absolute error", frame.plot = FALSE, 
-        lty = 1, names = c("low", "medium", "high"), xlab = "Image quality", cex.axis = 1.4, cex.lab = 1.4, 
-        boxfill = colors[2], boxlwd = 2, pch = 20, add = TRUE) # , medcol = "red"
+boxplot(dat$mae ~ dat$qual, ylim = c(-0.02, 0.5), ylab = "Mean absolute error [unitless]", frame.plot = FALSE, 
+        lty = 1, names = c("low", "medium", "high"), xlab = "Image quality", cex.axis = 2.5, cex.lab = 2.7, 
+        boxfill = colors[2], boxlwd = 2, pch = 20) 
+
 # add label for plot
 text(x = .5, y = .48, labels = "a)", cex = 2, font = 2)
 
 # plot the frequencies below boxplot
 freq <- aggregate(mae ~  qual, dat, length)
 freq$mae <- freq$mae / sum(freq$mae) * 100
-text(1:3, rep(min(dat$mae),3) - 0.02, paste0(round(freq$mae, 2), "%"), cex = 1.4) 
+text(1:3, rep(min(dat$mae),3) - 0.02, paste0(round(freq$mae, 2), "%"), cex = 2.5)
 
 # improve aesthetics
 box(bty="c") # adds the lower axis (which has been removed before)
@@ -114,14 +115,14 @@ box(bty="c") # adds the lower axis (which has been removed before)
 # add mean values to boxplot
 means <- aggregate(mae ~  qual, dat, mean)
 points(1:3, means$mae, col = "red", pch = 19)
-text(1:3, means$mae + 0.015, labels = round(means$mae, 2), cex = 1.4)
+text(1:3, means$mae + 0.015, labels = round(means$mae, 2), cex = 2.5)
 
 
 ## plot 2: growth form
 
-par(mar = c(5, 0, 1, 0), xpd = TRUE)
+par(mar = c(6, 0, 1, 0), xpd = TRUE, mgp=c(4.5,1.5,0))
 boxplot(dat$mae ~ dat$wood, lty = 1, ylim = c(-0.02, 0.5), boxwex = 0.7, yaxt = "n", 
-        ylab = "", frame.plot = FALSE, names = c("non-woody", "woody"), xlab = "Growth form", cex.axis = 1.4, cex.lab = 1.4, 
+        ylab = "", frame.plot = FALSE, names = c("non-woody", "woody"), xlab = "Growth form", cex.axis = 2.5, cex.lab = 2.7, 
         boxfill = colors[9], boxlwd = 2, pch = 20) # boxfill = "gray70"
 
 # add grid line
@@ -130,7 +131,7 @@ abline(h = seq(0, 0.5, 0.1), col = "grey")
 # get grid lines to background
 par(xpd = TRUE)
 boxplot(dat$mae ~ dat$wood, lty = 1, ylim = c(-0.02, 0.5), boxwex = 0.7, yaxt = "n", 
-        ylab = "", frame.plot = FALSE, names = c("non-woody", "woody"), xlab = "Growth form", cex.axis = 1.4, cex.lab = 1.4, 
+        ylab = "", frame.plot = FALSE, names = c("non-woody", "woody"), xlab = "Growth form", cex.axis = 2.5, cex.lab = 2.7, 
         boxfill = colors[9], boxlwd = 2, pch = 20, add = TRUE)
 
 # add label for plot
@@ -144,21 +145,21 @@ abline(h=.5208, lwd = 1)
 # plot the frequencies below boxplot
 freq <- aggregate(mae ~  wood, dat, length)
 freq$mae <- freq$mae / sum(freq$mae) * 100
-text(1:2, rep(min(dat$mae),3) - 0.02, paste0(round(freq$mae, 2), "%"), cex = 1.4) # second argument: position, third one: number to print
+text(1:2, rep(min(dat$mae),3) - 0.02, paste0(round(freq$mae, 2), "%"), cex = 2.5) 
 
 # add mean values to boxplot
 means <- aggregate(mae ~  wood, dat, mean)
 points(1:2, means$mae, col = "red", pch = 19)
-text(1:2, means$mae + 0.015, labels = round(means$mae, 2), cex = 1.4)
+text(1:2, means$mae + 0.015, labels = round(means$mae, 2), cex = 2.5)
 
 
 ## plot 3: image-target distance
 
-par(mar = c(5, 0, 1, 1), xpd = FALSE)
+par(mar = c(6, 0, 1, 1), xpd = FALSE, mgp=c(4.5,1.5,0)) 
 dat$dist_to_obj <- as.character(dat$dist_to_obj)
 boxplot(dat$mae ~ dat$dist_to_obj, yaxt = "n", ylab = "", frame.plot = FALSE, 
-        lty = 1, ylim = c(-0.02, 0.5), names = c("0-1m", "1-5m", ">5m"), 
-        xlab = "Distance to target species", cex.axis = 1.4, cex.lab = 1.4, 
+        lty = 1, ylim = c(-0.02, 0.5), names = c("<1m", "1-5m", ">5m"), 
+        xlab = "Image-target distance", cex.axis = 2.5, cex.lab = 2.7, 
         boxfill = colors[1], boxlwd = 2, pch = 20) # , xaxt = "n" # boxfill = "grey70"
 
 
@@ -167,8 +168,8 @@ abline(h = seq(0, 0.5, 0.1), col = "grey")
 
 # get grid lines to background
 boxplot(dat$mae ~ dat$dist_to_obj, yaxt = "n", ylab = "", frame.plot = FALSE, 
-        lty = 1, ylim = c(-0.02, 0.5), names = c("0-1m", "1-5m", ">5m"), 
-        xlab = "Distance to target species", cex.axis = 1.4, cex.lab = 1.4, 
+        lty = 1, ylim = c(-0.02, 0.5), names = c("<1m", "1-5m", ">5m"), 
+        xlab = "Distance to target species", cex.axis = 2.5, cex.lab = 2.7, 
         boxfill = colors[1], boxlwd = 2, pch = 20, add = TRUE) # , xaxt = "n"
 
 # add label for plot
@@ -180,14 +181,12 @@ box(bty="]")
 # plot the frequencies below boxplot
 freq <- aggregate(mae ~  dist_to_obj, dat, length)
 freq$mae <- freq$mae / sum(freq$mae) * 100
-text(1:3, rep(min(dat$mae),3) - 0.02, paste0(round(freq$mae, 2), "%"), cex = 1.4) # second argument: position, third one: number to print
+text(1:3, rep(min(dat$mae),3) - 0.02, paste0(round(freq$mae, 2), "%"), cex = 2.5) # second argument: position, third one: number to print
 
 # add mean values to boxplot
 means <- aggregate(mae ~  dist_to_obj, dat, mean)
 points(1:3, means$mae, col = "red", pch = 19)
-text(1:3, means$mae + 0.015, labels = round(means$mae, 2), cex = 1.4)
-# boxplot(dat$mae ~ dat$dist_to_obj, xaxt = "n", yaxt = "n", ylab = "", xlab = "")
-# axis(side = 4, at = seq(0, 0.5, 0.1))
+text(1:3, means$mae + 0.017, labels = round(means$mae, 2), cex = 2.5)
 dev.off()
 
 
